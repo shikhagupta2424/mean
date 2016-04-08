@@ -9,17 +9,21 @@ console.log = function(){
 */
 
 // Requires meanio .
-//SHIKHA START
+//SHIKHA START: To show the Comments from database
 var mean = require('meanio');
 var express = require('express');
 var app = express();
-app.use(express.static(__dirname + '/packages/core/articles/public/views'));
-app.get('/contactList', function (req, res) { });
+var mongojs = require('mongojs');
+var db = mongojs('mean-dev',['commentList']);
+app.use(express.static(__dirname + '/packages/core/articles/public'));
+app.get('/commentList', function (req, res) {
+    console.log("Comments from commentList collection  to test the connection")
 
-
-//app.get('/', function (req, res) {
-//    res.send("hello I am new shikha")
-//});
+    db.commentList.find(function (err, docs) {
+        console.log(docs);
+        res.json(docs);
+    })
+});
 app.listen(3000);
 console.log("runnning on 3000");
 //SHIKHA END
