@@ -1,5 +1,16 @@
 'use strict';
+// Angular controller to show all the comments from the database.//Shikha Start
+var myApp = angular.module('myApp', []);
 
+myApp.controller('ArticlesController', ['$scope','$http', function ($scope,$http) {
+    
+    console.log("hello shikha from ctrl");
+    $http.get('/commentList').success(function (response) {
+        console.log("i go t the datat i requested");
+        $scope.commentList = response;
+    })
+}]);
+//Shikha End
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'MeanUser', 'Circles',
   function($scope, $stateParams, $location, Global, Articles, MeanUser, Circles) {
     $scope.global = Global;
