@@ -9,7 +9,20 @@ console.log = function(){
 */
 
 // Requires meanio .
+//SHIKHA START
 var mean = require('meanio');
+var express = require('express');
+var app = express();
+app.use(express.static(__dirname + '/packages/core/articles/public/views'));
+app.get('/contactList', function (req, res) { });
+
+
+//app.get('/', function (req, res) {
+//    res.send("hello I am new shikha")
+//});
+app.listen(3000);
+console.log("runnning on 3000");
+//SHIKHA END
 var cluster = require('cluster');
 var deferred = require('q').defer();
 
