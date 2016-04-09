@@ -8,7 +8,7 @@ angular.module('mean.articles').config(['$stateProvider',
     $stateProvider
       .state('all articles', {
         url: '/articles',
-        templateUrl: '/articles/views/list.html',
+        templateUrl: '/articles/index.html',// routing to my new view page index.html
         requiredCircles : {
           circles: ['authenticated'],
           denyState: 'auth.login'
