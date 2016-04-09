@@ -9,21 +9,39 @@ console.log = function(){
 */
 
 // Requires meanio .
-//SHIKHA START: To show the Comments from database
+//SHIKHA START
 var mean = require('meanio');
 var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
-var db = mongojs('mean-dev',['commentList']);
+var http = require('http');
+var db = mongojs('mean-dev', ['commentList']);
+var bodyPaser = require('body-parser');
+
 app.use(express.static(__dirname + '/packages/core/articles/public'));
+app.use(bodyPaser.json());
+// show list of comment node server
 app.get('/commentList', function (req, res) {
-    console.log("Comments from commentList collection  to test the connection")
+    console.log('I received the message');
 
     db.commentList.find(function (err, docs) {
         console.log(docs);
         res.json(docs);
     })
+
+
 });
+//Add comment node server request
+app.post('/commentList', function (req, res) {
+    console.log(req.body);
+    db.commentList.insert(req.body, function (err, doc) {
+        res.json(doc);
+    })
+    //install body-parser to know the server how to parse the body of the input
+
+
+});
+
 app.listen(3000);
 console.log("runnning on 3000");
 //SHIKHA END
