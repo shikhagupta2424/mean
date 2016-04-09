@@ -1,5 +1,5 @@
 <!doctype html>
-<htm ng-app="myApp">
+<html ng-app="myApp">
     <head>
         <meta charset="utf-8">
 
@@ -39,10 +39,23 @@
                     <tr>
                         <th>Title</th>
                         <th>Comment</th>
+                        <th>Add your Comments HERE !!</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="usercomment in commentList">
+                        <td>
+                            <input class="form-control" ng-model="usercomment.Title"/>
+                        </td>
+                        <td>
+                            <input class="form-control" ng-model="usercomment.Comment" />
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="AddComment()"> Comment</button>
+                        </td>
+
+                    </tr>
+                     <tr ng-repeat="usercomment in commentList">
                         <td>
                             {{usercomment.Title}}
                         </td>
@@ -54,8 +67,7 @@
                 </tbody>
 
             </table>
-            <input ng-model="test" />
-            <input ng-model="test" />
+        
 
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
