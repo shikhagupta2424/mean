@@ -5,10 +5,24 @@ var myApp = angular.module('myApp', []);
 myApp.controller('ArticlesController', ['$scope','$http', function ($scope,$http) {
     
     console.log("hello shikha from ctrl");
-    $http.get('/commentList').success(function (response) {
-        console.log("i go t the datat i requested");
-        $scope.commentList = response;
-    })
+    // As soon as add the data should display in List without refershing the page
+    var refresh = function () {
+        $http.get('/commentList').success(function (response) {
+            console.log("i go t the datat i requested");
+            $scope.commentList = response;
+            $scope.usercomment = '';
+
+        })
+    }
+    refresh();
+    $scope.AddComment = function () {
+        console.log($scope.usercomment);
+        $http.post('/commentList', $scope.usercomment).success(function (response) {
+            console.log(response);
+            refresh();
+        });
+
+    }
 }]);
 //Shikha End
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Global', 'Articles', 'MeanUser', 'Circles',
