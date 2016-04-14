@@ -27,11 +27,11 @@ var commentListSchema = new Schema({
 /**
  * Validations
  */
-commentListSchema.path('title').validate(function (Title) {
+commentListSchema.path('Title').validate(function (Title) {
   return !!Title;
 }, 'Title cannot be blank');
 
-commentListSchema.path('content').validate(function (Comment) {
+commentListSchema.path('Comment').validate(function (Comment) {
   return !!Comment;
 }, 'Content cannot be blank');
 
