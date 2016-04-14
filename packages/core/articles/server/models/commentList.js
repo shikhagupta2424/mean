@@ -12,12 +12,12 @@ var mongoose = require('mongoose'),
  */
 var commentListSchema = new Schema({
 
-  title: {
+  Title: {
     type: String,
     required: true,
     trim: true
   },
-  content: {
+  Comment: {
     type: String,
     required: true,
     trim: true
@@ -27,12 +27,12 @@ var commentListSchema = new Schema({
 /**
  * Validations
  */
-commentListSchema.path('title').validate(function (title) {
-  return !!title;
+commentListSchema.path('title').validate(function (Title) {
+  return !!Title;
 }, 'Title cannot be blank');
 
-commentListSchema.path('content').validate(function (content) {
-  return !!content;
+commentListSchema.path('content').validate(function (Comment) {
+  return !!Comment;
 }, 'Content cannot be blank');
 
 /**
