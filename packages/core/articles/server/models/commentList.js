@@ -41,7 +41,7 @@ commentListSchema.path('content').validate(function (Comment) {
 commentListSchema.statics.load = function (id, cb) {
   this.findOne({
     _id: id
-  }).populate('user', 'name username').exec(cb);
+  });
 };
 
 mongoose.model('commentList', commentListSchema);
